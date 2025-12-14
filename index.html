@@ -552,80 +552,54 @@
         }
 
         /* Projects Section */
-        .projects-grid {
+        .projects-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .project-card {
+        .project-item {
             background: white;
+            padding: 30px;
             border-radius: 10px;
-            overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .project-img {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 25px;
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
         }
 
         .project-title {
             font-size: 1.3rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
 
         .project-desc {
             color: #666;
-            margin-bottom: 15px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
             margin-bottom: 20px;
         }
 
-        .project-tag {
-            padding: 5px 12px;
-            background: #e3f2fd;
-            color: var(--secondary);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
         .project-link {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 5px;
+            color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             transition: var(--transition);
         }
 
         .project-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            gap: 10px;
         }
 
         /* Research Section */
@@ -830,17 +804,16 @@
             transition: var(--transition);
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-
-        /* Add disabled styling to show not-allowed cursor */
         .submit-btn[disabled] {
             cursor: not-allowed;
             opacity: 0.65;
             transform: none;
             box-shadow: none;
+        }
+
+        .submit-btn:hover:not([disabled]) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
 
         /* Footer */
@@ -884,6 +857,39 @@
 
         .audio-control:hover {
             transform: scale(1.1);
+        }
+
+        /* Footer Buttons */
+        .footer-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-btn i {
+            font-size: 1rem;
         }
 
         /* Animations */
@@ -977,7 +983,8 @@
                 font-size: 1.1rem;
             }
             
-            .projects-grid {
+            .projects-content,
+            .research-content {
                 grid-template-columns: 1fr;
             }
             
@@ -985,41 +992,7 @@
                 padding: 10px 25px;
                 font-size: 1rem;
             }
-        }
- .footer-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .footer-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .footer-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .footer-btn i {
-            font-size: 1rem;
-        }
-        
-        /* Responsive adjustments for footer buttons */
-        @media (max-width: 576px) {
+            
             .footer-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1041,6 +1014,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1053,16 +1027,15 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <!-- Profile Image Container - Centered above text -->
+
             <div class="profile-img-container">
-                <!-- put your profile image here:
-                     d:\MY FOLDER\My Important Coding files\Web Devlopment\Fahim Sir Protfolio\assets\images\profile.jpg -->
-                <img src="73372= (1).jpg" alt="Fahimul Islam" class="profile-img">
+
+                <img src="PP2.jpg" alt="Fahimul Islam" class="profile-img">
             </div>
             
             <h1>Fahimul Islam</h1>
-        
-            <p class="tagline">A graduate Student and Research Enthusiasts in Materials Science</p>
+            <div class="title">Mathematical Modeler & Educator</div>
+            <p class="tagline">Bridging mathematical theory with computational applications to solve real-world problems</p>
             
             <!-- CV Button -->
             <a href="https://drive.google.com/file/d/1XyEX3MyG5-mo4qMV1ZYHGyRtHzGGXBsx/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="cv-button" id="cvButton">
@@ -1118,14 +1091,9 @@
             <div class="about-content">
                 <!-- Left: About Text -->
                 <div class="about-text">
-                    <p>I am a fresh graduate from Bangladesh University of Engineering and Technology (BUET) in Materials and Metallurgical Engineering. I am a materials science researcher with a strong interest in semiconductor materials, nanomaterial synthesis, and photovoltaic device engineering. My work bridges experimental materials development and computational device simulation, allowing me to understand materials from both a fundamental and application-driven perspective.
-
-My research experience spans the sol–gel synthesis of Mg–V co-doped ZnO nanoparticles, followed by comprehensive characterization using XRD, UV–Vis, FTIR, SEM, and TEM. I have also applied SCAPS-1D device simulation to evaluate and optimize these materials as window layers for CdTe solar cells by studying the effects of temperature, defect density, carrier concentration, and film thickness. In parallel, I have conducted a full experimental–computational study on lead-free double halide perovskites (K₂AgSbBr₆) using DFT (HSE06) + Scaps-1D, exploring 77 ETL/HTL configurations to develop high-efficiency, environmentally friendly absorber structures.
-
-I am passionate about designing next-generation photovoltaic materials, understanding band alignment and charge transport physics, and using simulations to accelerate materials discovery. 
-I am motivated by interdisciplinary research and aspire to develop sustainable, high-performance materials that contribute to clean energy technologies and advanced electronic devices.</p>
-                
-                    
+                    <p>I am a dedicated mathematical modeler and educator with a passion for applying mathematical principles to solve complex real-world problems. My expertise spans both theoretical mathematics and practical computational applications.</p>
+                    <p>With over four years of teaching experience, I've developed a unique approach that makes complex mathematical concepts accessible and engaging for students at all levels.</p>
+                    <div class="quote">"I bridge mathematical logic with real-world computing."</div>
                 </div>
 
                 <!-- Right: Skills Vertical Stack -->
@@ -1200,18 +1168,7 @@ I am motivated by interdisciplinary research and aspire to develop sustainable, 
                     <div class="skill-percent">85%</div>
                 </div>
                 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div class="skill-name">Mathematical Modeling</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="95"></div>
-                    </div>
-                    <div class="skill-percent">95%</div>
-                </div>
+
                 
                 <div class="skill-item">
                     <div class="skill-header">
@@ -1254,31 +1211,72 @@ I am motivated by interdisciplinary research and aspire to develop sustainable, 
             </div>
         </div>
     </section>
-<!--
-    
+
+    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-            
-            -->
-                <!--
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-chart-line"></i>
+            <div class="projects-content">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Financial Market Predictor</h3>
-                        <p class="project-desc">A C++ application that uses mathematical models to predict stock market trends with 85% accuracy.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">Mathematical Modeling</span>
-                            <span class="project-tag">Data Analysis</span>
-                        </div>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
+                    <h3 class="project-title">Artefact Analysis Report
+                    </h3>
+                    <p class="project-desc">This project is a comprehensive analysis of a uPVC pipe sample intended for rainwater harvesting in coastal areas. The study evaluates the pipe's composition using FTIR spectroscopy and its mechanical properties 
+                        (tensile, impact, flexural, and hardness) to ensure it meets durability requirements in environments with high UV exposure and salinity. The report concludes with recommendations 
+                        for compositional and manufacturing adjustments to improve performance and reduce production costs</p>
+                    <a href="https://drive.google.com/file/d/1Eh3gz0qcJ-H2_5vWMFYblCs9a7mIy3lB/view?usp=sharing" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
-                -->
+                
+                <!-- Project 2 -->
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="project-title">Failure Analysis Report</h3>
+                    <p class="project-desc">This project is a failure analysis performed on a mild steel sample that failed during a nick bend test. The investigation involved Optical Emission Spectrometry (OES), hardness testing, and microstructure 
+                        analysis to determine the failure's root cause. The analysis concluded that the ductile failure was primarily
+                         due to manganese sulfide (MnS) inclusions, which facilitated microvoid nucleation and growth under stress.</p>
+                    <a href="https://drive.google.com/file/d/1zj8kk84MbZGrd5tpimIeDe0gln2_OfFn/view?usp=sharing" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="project-title">Capstone Prorject Proposal + Report for Group-2</h3>
+                    <p class="project-desc">This project is a proposal for a capstone project focusing on a green pathway for producing energy by generating hydrogen from wastewater. The proposed method involves two main steps: first, using an adsorption
+                         mechanism to isolate heavy metals from the wastewater, and second, splitting the purified water into hydrogen gas using solar-powered electrolysis.
+                         The project aims to make productive use of contaminated industrial wastewater while producing clean energy</p>
+                    <a href="https://drive.google.com/file/d/1nLD5LUPBJHeBogJcZ5lz0iABjkkA8Ztt/view?usp=sharing" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="project-title">Investigation of Microstructure and Mechanical Properties of Welded Joint
+                    </h3>
+                    <p class="project-desc">This experiment focused on investigating the microstructure and mechanical properties of a welded joint, specifically one prepared using Gas Tungsten Arc Welding (GTAW). The project included macro and micro analysis 
+                        to observe microstructure control and evaluate the Hall-Petch effect based on grain size variation.
+                         Mechanical testing was also performed, including transverse tensile, nick-break, and bend tests on a butt-welded pipe joint.</p>
+                    <a href="https://drive.google.com/file/d/18bJJfiycPkXcnMNJYSEyhZ7F_CcJfWWP/view?usp=sharing" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="project-title">MME 308 Task</h3>
+                    <p class="project-desc">This document presents results for two distinct laboratory tasks. The first task involves the analysis of doped Zinc Oxide (ZnO) materials using X-ray Diffraction (XRD) data to calculate the crystallite size 
+                        (using the Scherrer equation) and determine lattice parameters. The second task is a sieve analysis on molding sand to determine its AFS Grain Fineness Number (GFN).</p>
+                    <a href="https://drive.google.com/file/d/1VyXe3Nm7HX4yiWI1k4k4bvM9wsfKTYEX/view?usp=sharing" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
                 
             </div>
         </div>
@@ -1294,7 +1292,7 @@ I am motivated by interdisciplinary research and aspire to develop sustainable, 
                     <div class="research-icon">
                         <i class="fa-solid fa-book-open"></i>
                     </div>
-                    <h3 class="research-title">Paper 1</h3>
+                    <h3 class="research-title">Publication 1</h3>
                     <p class="research-desc">Synthesis and Characterization of Mg–V Co-Doped ZnO
 Nanoparticles and performance evaluation as an Optimized
 Window Layer for CdTe Solar Cells using SCAPS-1D </p>
@@ -1306,7 +1304,7 @@ Window Layer for CdTe Solar Cells using SCAPS-1D </p>
                     <div class="research-icon">
                         <i class="fa-solid fa-book-open"></i>
                     </div>
-                    <h3 class="research-title">Paper 2</h3>
+                    <h3 class="research-title">Publication 2</h3>
                     <p class="research-desc">An Extensive Study of the Optoelectronic and Photovoltaic
 Properties of Lead-Free K2Agsbbr6-Based Double Halide Perovskite
 Solar Cells, and Optimization of Multiple ETL and HTL Layers
@@ -1316,77 +1314,33 @@ Using DFT And SCAPS-1D</p>
                      
 
                 <!--3-->
-                <!--NA
+                
                 <div class="research-item">
                     <div class="research-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fa-solid fa-book-open"></i>
                     </div>
-                    <h3 class="research-title">Computational Intelligence</h3>
+                    <h3 class="research-title">Publication 3</h3>
+                    <p class="research-desc">Toward a Circular Economy for CdTe Photovoltaics: Cadmium and
+Tellurium-Reduced ZMO/CdTe1-xSx Solar Cell Structure
+Optimization and Advanced Recycling Technologies</p>
+                    <a href="https://drive.google.com/file/d/1CFHvBL3ZokB4mEN0hyPQTV0SsYpZe_A5/view?usp=sharing" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!--4-->
+                
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="research-title">Publication 4</h3>
                     <p class="research-desc">Exploring the intersection of mathematical modeling and artificial intelligence for predictive analytics.</p>
                     <a href="#" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
                 </div>
-                   NA-->
-            </div>
-        </div>
-    </section>
-  <!--
-
-     
-    <section id="gallery">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <div class="gallery-grid">
-
-
-                
-                <div class="gallery-item">
-                    <img class="gallery-photo" src="gallery1.jpg" alt="Gallery 1">
-                </div>
-
-                <div class="gallery-item">
-                    <img class="gallery-photo" src="gallery2.jpg" alt="Gallery 2">
-                </div>
-
-                <div class="gallery-item">
-                    <img class="gallery-photo" src="gallery3.jpg" alt="Gallery 3">
-                </div>
 
             </div>
         </div>
     </section>
 
-
-    <section id="teaching" style="background: #f5f7fa;">
-        <div class="container">
-            <h2 class="section-title">Teaching</h2>
-            <div class="teaching-content">
-                <div class="teaching-item">
-                    <div class="teaching-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="teaching-title">University Courses</h3>
-                    <p class="teaching-desc">Teaching advanced mathematics and computer science courses at undergraduate and graduate levels.</p>
-                </div>
-                
-                <div class="teaching-item">
-                    <div class="teaching-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="teaching-title">Workshops</h3>
-                    <p class="teaching-desc">Conducting workshops on mathematical modeling and programming for students and professionals.</p>
-                </div>
-                
-                <div class="teaching-item">
-                    <div class="teaching-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="teaching-title">Curriculum Development</h3>
-                    <p class="teaching-desc">Designing innovative curricula that bridge theoretical mathematics with practical applications.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-             -->
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -1455,13 +1409,13 @@ Using DFT And SCAPS-1D</p>
     </section>
 
     <!-- Footer -->
-<footer>
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <!-- Portfolio Link Button -->
                 <div class="footer-buttons">
                     <a href="https://pran41.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" class="footer-btn">
-                        <i class="fas fa-file-pdf"></i> Creator's Portfolio
+                        <i class="fas fa-file-pdf"></i> View Portfolio
                     </a>
                 </div>
                 
@@ -1578,7 +1532,7 @@ Using DFT And SCAPS-1D</p>
         
         // Scroll reveal animation
         const revealOnScroll = () => {
-            const elements = document.querySelectorAll('.stat-item, .skills, .about-content, .skill-category, .skill-item, .project-card, .research-item, .gallery-item, .teaching-item, .contact-content');
+            const elements = document.querySelectorAll('.stat-item, .skills, .about-content, .skill-category, .skill-item, .project-item, .research-item, .gallery-item, .teaching-item, .contact-content');
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -1606,6 +1560,4 @@ Using DFT And SCAPS-1D</p>
         });
     </script>
 </body>
-
 </html>
-
